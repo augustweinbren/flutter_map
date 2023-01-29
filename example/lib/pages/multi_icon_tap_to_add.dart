@@ -4,34 +4,35 @@ import 'package:flutter_map_example/widgets/drawer.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:positioned_tap_detector_2/positioned_tap_detector_2.dart';
 
-class TapToAddPage extends StatefulWidget {
-  static const String route = '/tap';
+class MultiIconTapToAddPage extends StatefulWidget {
+  static const String route = '/multiicontap';
 
-  const TapToAddPage({Key? key}) : super(key: key);
+  const MultiIconTapToAddPage({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return TapToAddPageState();
+    return MultiIconTapToAddPageState();
   }
 }
 
-class TapToAddPageState extends State<TapToAddPage> {
+class MultiIconTapToAddPageState extends State<MultiIconTapToAddPage> {
   List<LatLng> tappedPoints = [];
 
   @override
   Widget build(BuildContext context) {
-    final markers = tappedPoints.map((latlng) {
+    final heartMarkers = tappedPoints.map((latlng) {
       return Marker(
         width: 80,
         height: 80,
         point: latlng,
-        builder: (ctx) => const Icon(Icons.favorite),
+        // builder: (ctx) => const FlutterLogo(),
+        builder: (ctx) => const Icon(Icons.monitor),
       );
     }).toList();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Tap to add pins')),
-      drawer: buildDrawer(context, TapToAddPage.route),
+      appBar: AppBar(title: const Text('Tap to add multi-icon pins')),
+      drawer: buildDrawer(context, MultiIconTapToAddPage.route),
       body: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(
@@ -52,7 +53,7 @@ class TapToAddPageState extends State<TapToAddPage> {
                         'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                     userAgentPackageName: 'dev.fleaflet.flutter_map.example',
                   ),
-                  MarkerLayer(markers: markers),
+                  MarkerLayer(markers: heartMarkers),
                 ],
               ),
             ),

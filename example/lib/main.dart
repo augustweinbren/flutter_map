@@ -19,6 +19,7 @@ import 'package:flutter_map_example/pages/marker_anchor.dart';
 import 'package:flutter_map_example/pages/marker_rotate.dart';
 import 'package:flutter_map_example/pages/max_bounds.dart';
 import 'package:flutter_map_example/pages/moving_markers.dart';
+import 'package:flutter_map_example/pages/multi_icon_tap_to_add.dart';
 import 'package:flutter_map_example/pages/network_tile_provider.dart';
 import 'package:flutter_map_example/pages/offline_map.dart';
 import 'package:flutter_map_example/pages/on_tap.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
             const NetworkTileProviderPage(),
         WidgetsPage.route: (context) => const WidgetsPage(),
         TapToAddPage.route: (context) => const TapToAddPage(),
+        MultiIconTapToAddPage.route: (context) => const MultiIconTapToAddPage(),
         EsriPage.route: (context) => const EsriPage(),
         PolylinePage.route: (context) => const PolylinePage(),
         MapControllerPage.route: (context) => const MapControllerPage(),

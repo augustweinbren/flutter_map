@@ -18,6 +18,7 @@ import 'package:flutter_map_example/pages/map_inside_listview.dart';
 import 'package:flutter_map_example/pages/marker_anchor.dart';
 import 'package:flutter_map_example/pages/marker_rotate.dart';
 import 'package:flutter_map_example/pages/max_bounds.dart';
+import 'package:flutter_map_example/pages/multi_icon_tap_to_add.dart';
 import 'package:flutter_map_example/pages/moving_markers.dart';
 import 'package:flutter_map_example/pages/network_tile_provider.dart';
 import 'package:flutter_map_example/pages/offline_map.dart';
@@ -91,6 +92,12 @@ Drawer buildDrawer(BuildContext context, String currentRoute) {
           context,
           const Text('Tap to Add Pins'),
           TapToAddPage.route,
+          currentRoute,
+        ),
+        _buildMenuItem(
+          context,
+          const Text('Tap to Add Multi-Icon Pins'),
+          MultiIconTapToAddPage.route,
           currentRoute,
         ),
         _buildMenuItem(
