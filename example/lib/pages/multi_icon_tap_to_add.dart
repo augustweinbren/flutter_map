@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_example/widgets/drawer.dart';
@@ -17,6 +19,8 @@ class MultiIconTapToAddPage extends StatefulWidget {
 
 class MultiIconTapToAddPageState extends State<MultiIconTapToAddPage> {
   List<LatLng> tappedPoints = [];
+  List<LatLng> diamondPoints = [];
+  List<LatLng> moneyPoints = [];
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,26 @@ class MultiIconTapToAddPageState extends State<MultiIconTapToAddPage> {
         height: 80,
         point: latlng,
         // builder: (ctx) => const FlutterLogo(),
-        builder: (ctx) => const Icon(Icons.monitor),
+        builder: (ctx) => const Icon(Icons.favorite_border),
+      );
+    }).toList();
+    final diamondMarkers = diamondPoints.map((latlng) {
+      return Marker(
+        width: 80,
+        height: 80,
+        point: latlng,
+        // builder: (ctx) => const FlutterLogo(),
+        builder: (ctx) => const Icon(Icons.diamond_outlined),
+      );
+    }).toList();
+    final moneyMarkers = moneyPoints.map((latlng) {
+      return Marker(
+        width: 80,
+        height: 80,
+        point: latlng,
+        // builder: (ctx) => const FlutterLogo(),
+        builder: (ctx) =>
+            const Icon(Icons.architecture_outlined), //TODO: change
       );
     }).toList();
 
@@ -54,6 +77,8 @@ class MultiIconTapToAddPageState extends State<MultiIconTapToAddPage> {
                     userAgentPackageName: 'dev.fleaflet.flutter_map.example',
                   ),
                   MarkerLayer(markers: heartMarkers),
+                  MarkerLayer(markers: diamondMarkers),
+                  MarkerLayer(markers: moneyMarkers),
                 ],
               ),
             ),
@@ -64,8 +89,19 @@ class MultiIconTapToAddPageState extends State<MultiIconTapToAddPage> {
   }
 
   void _handleTap(TapPosition tapPosition, LatLng latlng) {
-    setState(() {
-      tappedPoints.add(latlng);
-    });
+    int randNum = Random().nextInt(3);
+    if (randNum == 0) {
+      setState(() {
+        tappedPoints.add(latlng);
+      });
+    } else if (randNum == 1) {
+      setState(() {
+        diamondPoints.add(latlng);
+      });
+    } else {
+      setState(() {
+        moneyPoints.add(latlng);
+      });
+    }
   }
 }
